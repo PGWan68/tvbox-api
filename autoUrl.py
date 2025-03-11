@@ -120,8 +120,7 @@ def get_data(url):
     if url.startswith("http"):
         headers = {
             'User-Agent': 'okhttp/3.15',
-            'Accept': '*/*',
-            'Connection': 'close',
+            'Accept': '*/*'
         }
         print(url)
         urlReq = requests.get(url, verify=False,headers=headers)

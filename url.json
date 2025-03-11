@@ -11,12 +11,10 @@
         "url": "https://raw.githubusercontent.com/yoursmile66/TVBox/refs/heads/main/XC.json",
         "name": "南风_XC"
     },
-
     {
         "url": "https://raw.liucn.cc/box/m.json",
         "name": "老刘备_m"
     },
-
     {
         "url": "https://github.com/xianyuyimu/TVBOX-/raw/main/TVBox/%E4%B8%80%E6%9C%A8%E8%87%AA%E7%94%A8.json",
         "name": "xianyuyimu_一木自用"
@@ -61,7 +59,6 @@
         "url": "https://github.com/gaotianliuyun/gao/raw/master/XYQ.json",
         "name": "gaotianliuyun_XYQ"
     },
-
     {
         "url": "https://github.com/franksun1211/TVBOX/raw/main/0706.json",
         "name": "franksun1211_0706"
