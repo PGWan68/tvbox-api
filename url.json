@@ -2,9 +2,88 @@
     {
         "url": "http://www.饭太硬.com/tv",
         "name": "饭太硬_tv"
-    }, {
-         "url": "http://tvbox.xn--4kq62z5rby2qupq9ub.top",
+    },
+    {
+        "url": "http://tvbox.xn--4kq62z5rby2qupq9ub.top",
         "name": "王小二_top"
+    },
+    {
+        "url": "https://raw.githubusercontent.com/yoursmile66/TVBox/refs/heads/main/XC.json",
+        "name": "南风_XC"
+    },
+
+    {
+        "url": "https://raw.liucn.cc/box/m.json",
+        "name": "老刘备_m"
+    },
+
+    {
+        "url": "https://github.com/xianyuyimu/TVBOX-/raw/main/TVBox/%E4%B8%80%E6%9C%A8%E8%87%AA%E7%94%A8.json",
+        "name": "xianyuyimu_一木自用"
+    },
+    {
+        "url": "https://github.com/heroaku/TVboxo/raw/main/Text/ptest.json",
+        "name": "heroaku_ptest"
+    },
+    {
+        "url": "https://github.com/heroaku/TVboxo/raw/main/Text/pyn.json",
+        "name": "heroaku_pyn"
+    },
+    {
+        "url": "https://github.com/heroaku/TVboxo/raw/main/Text/ayn.json",
+        "name": "heroaku_ayn"
+    },
+    {
+        "url": "https://github.com/heroaku/TVboxo/raw/main/Text/dtes.json",
+        "name": "heroaku_dtes"
+    },
+    {
+        "url": "https://github.com/gaotianliuyun/gao/raw/master/0821.json",
+        "name": "gaotianliuyun_0821"
+    },
+    {
+        "url": "https://github.com/gaotianliuyun/gao/raw/master/0826.json",
+        "name": "gaotianliuyun_0826"
+    },
+    {
+        "url": "https://github.com/gaotianliuyun/gao/raw/master/0827.json",
+        "name": "gaotianliuyun_0827"
+    },
+    {
+        "url": "https://github.com/gaotianliuyun/gao/raw/master/0825.json",
+        "name": "gaotianliuyun_0825"
+    },
+    {
+        "url": "https://github.com/gaotianliuyun/gao/raw/master/js.json",
+        "name": "gaotianliuyun_js"
+    },
+    {
+        "url": "https://github.com/gaotianliuyun/gao/raw/master/XYQ.json",
+        "name": "gaotianliuyun_XYQ"
+    },
+
+    {
+        "url": "https://github.com/franksun1211/TVBOX/raw/main/0706.json",
+        "name": "franksun1211_0706"
+    },
+    {
+        "url": "https://github.com/yw88075/tvbox/raw/main/dr/js.json",
+        "name": "yw88075_js"
+    },
+    {
+        "url": "https://github.com/Dong-learn9/TVBox-zyjk/raw/main/tvbox2.json",
+        "name": "Dong-learn9_tvbox2"
+    },
+    {
+        "url": "https://github.com/liu673cn/box/raw/main/m.json",
+        "name": "liu673cn_m"
+    },
+    {
+        "url": "https://github.com/anaer/Meow/raw/main/meow.json",
+        "name": "anaer_meow"
+    },
+    {
+        "url": "https://github.com/hackyjso/box/raw/main/jzy.txt",
+        "name": "hackyjso_jzy"
     }
-    
 ]
