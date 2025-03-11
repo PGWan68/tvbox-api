@@ -3,6 +3,10 @@
         {
             "url": "./饭太硬_tv.json",
             "name": "饭太硬_tv"
+        },
+        {
+            "url": "./王小二_top.json",
+            "name": "王小二_top"
         }
     ]
 }
