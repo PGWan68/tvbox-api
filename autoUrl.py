@@ -117,12 +117,12 @@ def get_ext(ext):
 def get_data(url):
     if url.startswith("http"):
         headers = {
-            'User-Agent': 'python-requests/2.31.0',
-            'Accept-Encoding': 'gzip, deflate',
+            'User-Agent': 'okhttp/3.15',
             'Accept': '*/*',
             'Connection': 'keep-alive',
         }
-        urlReq = requests.get(url, verify=False)
+        print(url)
+        urlReq = requests.get(url, verify=False,headers=headers)
         return urlReq.text
     return ""
 
