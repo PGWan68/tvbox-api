@@ -121,7 +121,7 @@ def get_data(url):
         headers = {
             'User-Agent': 'okhttp/3.15',
             'Accept': '*/*',
-            'Connection': 'keep-alive',
+            'Connection': 'close',
         }
         print(url)
         urlReq = requests.get(url, verify=False,headers=headers)
