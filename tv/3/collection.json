@@ -1,6 +1,30 @@
 {
     "urls": [
         {
+            "url": "./饭太硬_tv.json",
+            "name": "饭太硬_tv"
+        },
+        {
+            "url": "./肥猫_PandaQ.json",
+            "name": "肥猫_PandaQ"
+        },
+        {
+            "url": "./王小二_top.json",
+            "name": "王小二_top"
+        },
+        {
+            "url": "./南风_XC.json",
+            "name": "南风_XC"
+        },
+        {
+            "url": "./老刘备_m.json",
+            "name": "老刘备_m"
+        },
+        {
+            "url": "./xianyuyimu_一木自用.json",
+            "name": "xianyuyimu_一木自用"
+        },
+        {
             "url": "./heroaku_ptest.json",
             "name": "heroaku_ptest"
         },
@@ -33,24 +57,16 @@
             "name": "gaotianliuyun_0825"
         },
         {
-            "url": "./gaotianliuyun_0707.json",
-            "name": "gaotianliuyun_0707"
+            "url": "./gaotianliuyun_js.json",
+            "name": "gaotianliuyun_js"
         },
         {
-            "url": "./xianyuyimu_一木自用.json",
-            "name": "xianyuyimu_一木自用"
-        },
-        {
-            "url": "./2hacc_tvbox.json",
-            "name": "2hacc_tvbox"
+            "url": "./gaotianliuyun_XYQ.json",
+            "name": "gaotianliuyun_XYQ"
         },
         {
             "url": "./franksun1211_0706.json",
             "name": "franksun1211_0706"
-        },
-        {
-            "url": "./Guard-H_fj.json",
-            "name": "Guard-H_fj"
         },
         {
             "url": "./yw88075_js.json",

@@ -4,11 +4,16 @@ import datetime
 import requests
 import json
 import urllib3
+import os
+import shutil
 
 from Crypto.Cipher import AES
 
 
 def main():
+
+    shutil.rmtree("./tv")
+
     urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
     with open('./url.json', 'r', encoding='utf-8') as f:
         urlJson = json.load(f)
@@ -28,11 +33,8 @@ def main():
         urlData = get_json(item["url"])
         for reI in range(len(reList)):
             urlName = item["name"]
-            urlPath = item["path"]
             reqText = urlData
-            if urlName != "gaotianliuyun_0707":
-                reqText = reqText.replace("'./", "'" + urlPath) \
-                    .replace('"./', '"' + urlPath)
+  
             if reRawList[reI]:
                 reqText = reqText.replace("/raw/", "@")
             else:
@@ -41,7 +43,12 @@ def main():
                 .replace('"https://github.com', '"' + reList[reI]) \
                 .replace("'https://raw.githubusercontent.com", "'" + reList[reI]) \
                 .replace('"https://raw.githubusercontent.com', '"' + reList[reI])
-            fp = open("./tv/" + str(reI) + "/" + urlName + ".json", "w+", encoding='utf-8')
+            
+            dir = "./tv/" + str(reI)
+            if not os.path.exists(dir):
+                os.makedirs(dir)            
+
+            fp = open(dir + "/" + urlName + ".json", "w+", encoding='utf-8')
             fp.write(reqText)
 
     collectionJson = {
@@ -98,6 +105,7 @@ def get_json(url):
         data = cbc_decrypt(data)
     if key:
         data = ecb_decrypt(data, key)
+
     return data
 def get_ext(ext):
     try:
@@ -107,7 +115,7 @@ def get_ext(ext):
 
 def get_data(url):
     if url.startswith("http"):
-        urlReq = requests.get(url, verify=False)
+        urlReq = requests.get(url, verify=False,headers={"User-Agent":"okhttp/3.15","Accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9"})
         return urlReq.text
     return ""
 
