@@ -6,6 +6,7 @@ import json
 import urllib3
 import os
 import shutil
+import time
 
 from Crypto.Cipher import AES
 
@@ -32,6 +33,7 @@ def main():
                  False, True]
     for item in urlJson:
         urlData = get_json(item["url"])
+        time.sleep(1)
         for reI in range(len(reList)):
             urlName = item["name"]
             reqText = urlData
