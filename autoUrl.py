@@ -122,7 +122,7 @@ def get_data(url):
             'Accept': '*/*',
             'Connection': 'keep-alive',
         }
-        urlReq = requests.get(url, verify=False,headers=headers)
+        urlReq = requests.get(url, verify=False)
         return urlReq.text
     return ""
 
