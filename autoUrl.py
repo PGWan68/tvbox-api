@@ -12,7 +12,8 @@ from Crypto.Cipher import AES
 
 def main():
 
-    shutil.rmtree("./tv")
+    # if os.path.exists("./tv"):
+    #     shutil.rmtree("./tv")
 
     urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
     with open('./url.json', 'r', encoding='utf-8') as f:
