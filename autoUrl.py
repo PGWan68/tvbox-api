@@ -116,7 +116,13 @@ def get_ext(ext):
 
 def get_data(url):
     if url.startswith("http"):
-        urlReq = requests.get(url, verify=False,headers={"Accept":"*/*","Connection":"close"})
+        headers = {
+            'User-Agent': 'python-requests/2.31.0',
+            'Accept-Encoding': 'gzip, deflate',
+            'Accept': '*/*',
+            'Connection': 'keep-alive',
+        }
+        urlReq = requests.get(url, verify=False,headers=headers)
         return urlReq.text
     return ""
 
