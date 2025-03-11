@@ -116,7 +116,7 @@ def get_ext(ext):
 
 def get_data(url):
     if url.startswith("http"):
-        urlReq = requests.get(url, verify=False,headers={"User-Agent":"okhttp/3.15","Accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9"})
+        urlReq = requests.get(url, verify=False,headers={"Accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9"})
         return urlReq.text
     return ""
 
