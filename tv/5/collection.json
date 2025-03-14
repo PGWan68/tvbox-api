@@ -17,32 +17,24 @@
             "name": "heroaku_dtes"
         },
         {
-            "url": "./qist_0821.json",
-            "name": "qist_0821"
+            "url": "./gaotianliuyun_0821.json",
+            "name": "gaotianliuyun_0821"
         },
         {
-            "url": "./qist_0826.json",
-            "name": "qist_0826"
+            "url": "./gaotianliuyun_0826.json",
+            "name": "gaotianliuyun_0826"
         },
         {
-            "url": "./qist_0827.json",
-            "name": "qist_0827"
+            "url": "./gaotianliuyun_0827.json",
+            "name": "gaotianliuyun_0827"
         },
         {
-            "url": "./qist_0825.json",
-            "name": "qist_0825"
+            "url": "./gaotianliuyun_0825.json",
+            "name": "gaotianliuyun_0825"
         },
         {
-            "url": "./qist_0707.json",
-            "name": "qist_0707"
-        },
-        {
-            "url": "./qist_js.json",
-            "name": "qist_js"
-        },
-        {
-            "url": "./qist_XYQ.json",
-            "name": "qist_XYQ"
+            "url": "./gaotianliuyun_0707.json",
+            "name": "gaotianliuyun_0707"
         },
         {
             "url": "./xianyuyimu_一木自用.json",
