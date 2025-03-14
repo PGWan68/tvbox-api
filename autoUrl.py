@@ -34,19 +34,26 @@ def main():
     for item in urlJson:
         urlData = get_json(item["url"])
         time.sleep(1)
+        print(urlData)
         for reI in range(len(reList)):
             urlName = item["name"]
+            urlPath = item["path"]
             reqText = urlData
   
+            reqText = reqText.replace("'./", "'" + urlPath) \
+                    .replace('"./', '"' + urlPath)
+
             if reRawList[reI]:
                 reqText = reqText.replace("/raw/", "@")
             else:
                 reqText = reqText.replace("/raw/", "/")
+
             reqText = reqText.replace("'https://github.com", "'" + reList[reI]) \
                 .replace('"https://github.com', '"' + reList[reI]) \
                 .replace("'https://raw.githubusercontent.com", "'" + reList[reI]) \
                 .replace('"https://raw.githubusercontent.com', '"' + reList[reI])
             
+            # 重新保存
             dir = "./tv/" + str(reI)
             if not os.path.exists(dir):
                 os.makedirs(dir)            
@@ -122,7 +129,6 @@ def get_data(url):
             'User-Agent': 'okhttp/3.15',
             'Accept': '*/*'
         }
-        print(url)
         urlReq = requests.get(url, verify=False,headers=headers)
         return urlReq.text
     return ""
