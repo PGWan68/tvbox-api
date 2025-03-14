@@ -1,64 +1,41 @@
-﻿import base64
+import base64
 import re
 import datetime
 import requests
 import json
 import urllib3
-import os
-import shutil
-import time
-
 from Crypto.Cipher import AES
 
 
 def main():
-
-    # if os.path.exists("./tv"):
-    #     shutil.rmtree("./tv")
-
     urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
     with open('./url.json', 'r', encoding='utf-8') as f:
         urlJson = json.load(f)
     nameList = []
-    
-    reList = [
-        "https://ghproxy.net/https://raw.githubusercontent.com", 
-        "https://gcore.jsdelivr.net/gh", 
-        "https://mirror.ghproxy.com/https://raw.githubusercontent.com",      
-        "https://github.moeyy.xyz/https://raw.githubusercontent.com", 
-        "https://fastly.jsdelivr.net/gh"]
-    
+    reList = ["https://ghproxy.net/https://raw.githubusercontent.com", "https://raw.kkgithub.com",
+              "https://gcore.jsdelivr.net/gh", "https://mirror.ghproxy.com/https://raw.githubusercontent.com",
+              "https://github.moeyy.xyz/https://raw.githubusercontent.com", "https://fastly.jsdelivr.net/gh"]
     reRawList = [False, False,
                  True, False,
                  False, True]
     for item in urlJson:
         urlData = get_json(item["url"])
-        time.sleep(1)
-        print(urlData)
         for reI in range(len(reList)):
             urlName = item["name"]
             urlPath = item["path"]
             reqText = urlData
-  
-            reqText = reqText.replace("'./", "'" + urlPath) \
+            if urlName != "gaotianliuyun_0707":
+                reqText = reqText.replace("'./", "'" + urlPath) \
                     .replace('"./', '"' + urlPath)
-
             if reRawList[reI]:
                 reqText = reqText.replace("/raw/", "@")
             else:
                 reqText = reqText.replace("/raw/", "/")
-
             reqText = reqText.replace("'https://github.com", "'" + reList[reI]) \
                 .replace('"https://github.com', '"' + reList[reI]) \
                 .replace("'https://raw.githubusercontent.com", "'" + reList[reI]) \
                 .replace('"https://raw.githubusercontent.com', '"' + reList[reI])
-            
-            # 重新保存
-            dir = "./tv/" + str(reI)
-            if not os.path.exists(dir):
-                os.makedirs(dir)            
-
-            fp = open(dir + "/" + urlName + ".json", "w+", encoding='utf-8')
+            fp = open("./tv/" + str(reI) + "/" + urlName + ".json", "w+", encoding='utf-8')
             fp.write(reqText)
 
     collectionJson = {
@@ -115,7 +92,6 @@ def get_json(url):
         data = cbc_decrypt(data)
     if key:
         data = ecb_decrypt(data, key)
-
     return data
 def get_ext(ext):
     try:
@@ -125,11 +101,7 @@ def get_ext(ext):
 
 def get_data(url):
     if url.startswith("http"):
-        headers = {
-            'User-Agent': 'okhttp/3.15',
-            'Accept': '*/*'
-        }
-        urlReq = requests.get(url, verify=False,headers=headers)
+        urlReq = requests.get(url, verify=False)
         return urlReq.text
     return ""
 
