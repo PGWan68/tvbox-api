@@ -4,6 +4,7 @@ import datetime
 import requests
 import json
 import urllib3
+import os
 from Crypto.Cipher import AES
 
 
@@ -11,31 +12,35 @@ def main():
     urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
     with open('./url.json', 'r', encoding='utf-8') as f:
         urlJson = json.load(f)
-    nameList = []
-    reList = ["https://ghproxy.net/https://raw.githubusercontent.com", "https://raw.kkgithub.com",
-              "https://gcore.jsdelivr.net/gh", "https://mirror.ghproxy.com/https://raw.githubusercontent.com",
-              "https://github.moeyy.xyz/https://raw.githubusercontent.com", "https://fastly.jsdelivr.net/gh"]
-    reRawList = [False, False,
-                 True, False,
-                 False, True]
+    with open('./proxy.json', 'r', encoding='utf-8') as f:
+        proxyJson = json.load(f)
+
     for item in urlJson:
         urlData = get_json(item["url"])
-        for reI in range(len(reList)):
+        for reI in range(len(proxyJson)):
             urlName = item["name"]
             urlPath = item["path"]
             reqText = urlData
-            if urlName != "gaotianliuyun_0707":
+            if urlName != "qist_0707":
                 reqText = reqText.replace("'./", "'" + urlPath) \
                     .replace('"./', '"' + urlPath)
-            if reRawList[reI]:
+                
+            if proxyJson[reI]["replace"]:
                 reqText = reqText.replace("/raw/", "@")
             else:
                 reqText = reqText.replace("/raw/", "/")
-            reqText = reqText.replace("'https://github.com", "'" + reList[reI]) \
-                .replace('"https://github.com', '"' + reList[reI]) \
-                .replace("'https://raw.githubusercontent.com", "'" + reList[reI]) \
-                .replace('"https://raw.githubusercontent.com', '"' + reList[reI])
-            fp = open("./tv/" + str(reI) + "/" + urlName + ".json", "w+", encoding='utf-8')
+
+            proxyUrl = proxyJson[reI]["url"]
+
+            reqText = reqText.replace("'https://github.com", "'" + proxyUrl) \
+                .replace('"https://github.com', '"' + proxyUrl) \
+                .replace("'https://raw.githubusercontent.com", "'" + proxyUrl) \
+                .replace('"https://raw.githubusercontent.com', '"' + proxyUrl)
+            
+            dirs = "./tv/"+str(reI)
+            if not os.path.exists(dirs):
+                os.makedirs(dirs)
+            fp = open(dirs + "/" + urlName + ".json", "w+", encoding='utf-8')
             fp.write(reqText)
 
     collectionJson = {
@@ -49,18 +54,18 @@ def main():
             }
             collectionJson["urls"].append(urlItem)
     collectionJson_data = json.dumps(collectionJson, ensure_ascii=False, indent=4)
-    for reI in range(len(reList)):
+    for reI in range(len(proxyJson)):
         fp = open("./tv/" + str(reI) + "/collection.json", "w+", encoding='utf-8')
         fp.write(collectionJson_data)
 
     now = datetime.datetime.now()
     fp = open('README.md', "w+", encoding='utf-8')
     fp.write("# 提示\n\n")
-    fp.write("感谢各位大佬的无私奉献.\n\n")
+    fp.write("感谢各位大佬的无私奉献。\n\n")
     fp.write(
-        "如果有收录您的配置，您也不希望被收录请[issues](https://github.com/hl128k/tvbox/issues)，必将第一时间移除\n\n")
+        "如果有收录您的配置，您不希望被收录请[issues](https://github.com/hl128k/tvbox/issues)，必将第一时间移除。\n\n")
     fp.write("# 免责声明\n\n")
-    fp.write("本项目（tvbox）的源代码是按“原样”提供，不带任何明示或暗示的保证。使用者有责任确保其使用符合当地法律法规。\n\n")
+    fp.write("本项目（tvbox-api）的源代码是按“原样”提供，不带任何明示或暗示的保证。使用者有责任确保其使用符合当地法律法规。\n\n")
     fp.write(
         "所有以任何方式查看本仓库内容的人、或直接或间接使用本仓库内容的使用者都应仔细阅读此声明。本仓库管理者保留随时更改或补充此免责声明的权利。一旦使用、复制、修改了本仓库内容，则视为您已接受此免责声明。\n\n")
     fp.write(
@@ -68,14 +73,14 @@ def main():
     fp.write(
         "本仓库内容中涉及的第三方硬件、软件等，与本仓库内容没有任何直接或间接的关系。本仓库内容仅对部署和使用过程进行客观描述，不代表支持使用任何第三方硬件、软件。使用任何第三方硬件、软件，所造成的一切后果由使用的个人或组织承担，与本仓库内容无关。\n\n")
     fp.write(
-        "所有直接或间接使用本仓库内容的个人和组织，应 24 小时内完成学习和研究，并及时删除本仓库内容。如对本仓库内容的功能有需求，应自行开发相关功能。所有基于本仓库内容的源代码，进行的任何修改，为其他个人或组织的自发行为，与本仓库内容没有任何直接或间接的关系，所造成的一切后果亦与本仓库内容和本仓库管理者无关 \n\n")
+        "所有直接或间接使用本仓库内容的个人和组织，应 24 小时内完成学习和研究，并及时删除本仓库内容。如对本仓库内容的功能有需求，应自行开发相关功能。所有基于本仓库内容的源代码，进行的任何修改，为其他个人或组织的自发行为，与本仓库内容没有任何直接或间接的关系，所造成的一切后果亦与本仓库内容和本仓库管理者无关。 \n\n")
     fp.write("# 介绍\n\n")
-    fp.write("自用请勿宣传\n\n")
-    fp.write("所有数据全部搜集于网络，不保证可用性\n\n")
-    fp.write("因电视对GitHub访问问题，所以将配置中的GitHub换成镜像源\n\n")
+    fp.write("自用请勿宣传。\n\n")
+    fp.write("所有数据全部搜集于网络，不保证可用性。\n\n")
+    fp.write("因电视对GitHub访问问题，所以将配置中的GitHub换成镜像源。\n\n")
     fp.write("本次自动更新时间为：" + now.strftime("%Y-%m-%d %H:%M:%S") + "\n\n")
     fp.write("当前内容来源详情请查看url.json\n\n")
-    fp.write("如果感兴趣,请复制项目后自行研究使用\n\n")
+    fp.write("如果感兴趣,请复制项目后自行研究使用！！！\n\n")
     fp.close()
 
 def get_json(url):

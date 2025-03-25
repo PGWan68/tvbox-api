@@ -1,0 +1,26 @@
+[
+    {
+        "url": "https://raw.kkgithub.com",
+        "replace": false
+    },
+    {
+        "url": "https://gcore.jsdelivr.net/gh",
+        "replace": true
+    },
+    {
+        "url": "https://fastly.jsdelivr.net/gh",
+        "replace": true
+    },
+    {
+        "url": "https://gh-proxy.com/https://raw.githubusercontent.com",
+        "replace": false
+    },
+    {
+        "url": "https://github.moeyy.xyz/https://raw.githubusercontent.com",
+        "replace": false
+    },
+    {
+        "url": "https://ghfast.top/https://raw.githubusercontent.com",
+        "replace": false
+    }
+]
